@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curriencies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Price in USD</th>
+        <th>Symbol</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for each in data %}
+        <tr {% if each.percent_change_24h.0 == "-" %}
+                class = "text-danger"
+            {% endif %}
+                class = "text-success"
+            >
+        {% empty %}
+        <tr>no result</tr>
+            <td> {{ each.rank }}</td>
+            <td> {{ each.name }}</td>
+            <td> {{ each.price_usd }}</td>
+            <td> {{ each.symbol }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

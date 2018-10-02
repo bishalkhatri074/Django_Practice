@@ -1,0 +1,12 @@
+{% extends "snippets/base.html" %}
+{% block content %}
+Latest Post
+<br>
+{%  for each in posts %}
+    <h1>{{ each.title }}</h1>
+    <small>{{ each.text }}
+        {{ each.author }}</small>
+    <p>{{ each.published_date }}</p>
+    <br>
+{% endfor %}
+{% endblock content %}
