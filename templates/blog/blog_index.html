@@ -3,10 +3,10 @@
 Latest Post
 <br>
 {%  for each in posts %}
-    <h1>{{ each.title }}</h1>
+    <h1>{{ each.title.upper }}</h1>
     <small>{{ each.text }}
         {{ each.author }}</small>
-    <p>{{ each.published_date }}</p>
+    <p>{{ each.published_date | date:"l, F, d, Y" }}</p>
     <br>
 {% endfor %}
 {% endblock content %}

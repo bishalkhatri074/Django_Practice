@@ -38,10 +38,20 @@ def create_comment(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         comment = request.POST.get('comment')
+        pub_post = request.POST.get('pub_post')
 
-        user = request.user
-
-        comment= Comment.objects.create(email=email, comment_text=comment,  )
+        comment= Comment.objects.create(email=email, comment_text=comment, published_post=pub_post )
         return redirect('blog_index')
 
     return render(request, template_name="blog/blog_comment_create.html", context={})
+
+
+def blog_detail(request, post_id):
+    # post = Post.objects.get(id=post)
+    post = get_objects_or_404(Post, id=post_id)
+
+    ctx ={
+        "post": post
+    }
+
+    return render(request, template_name="blog/blog_detail.html", context=ctx)
